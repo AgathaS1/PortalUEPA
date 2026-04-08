@@ -33,8 +33,8 @@ onMounted(() => {
             <nav>
                 <ul>
                     <li><router-link to="/">HOME</router-link></li>
-                    <li><a href="/meus-eventos">MEUS EVENTOS</a></li>
-                    <li><a href="/perfil"> MEU PERFIL</a></li>
+                    <li><router-link to="/meus-eventos">MEUS EVENTOS</router-link></li>
+                    <li><router-link to="/perfil"> MEU PERFIL</router-link></li>
                 </ul>
                 
                 <!-- Área Usuário -->

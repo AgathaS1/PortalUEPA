@@ -7,6 +7,7 @@ export const useUserStore = defineStore('user', {
     // -- State do usuário
     state: () => ({
         email: '',
+        matricula: '',
         logado: false, 
         loading: false
     }),
@@ -27,12 +28,16 @@ export const useUserStore = defineStore('user', {
                 // Usando o axios pra facilitar o acesso a api e gerar os cookie 
                 const res = await api.get('/usuario-logado')
 
-                // O axios já configura os dados uau
-                usuario.value = res.data
+                this.email = res.data?.email || ''
+                this.matricula = res.data?.matricula || ''
+                this.logado = Boolean(res.data?.logado || res.data?.email)
             } catch (error) {
-
-               console.error(error.message) // mensagem de erro que o axios gera    
-
+                this.email = ''
+                this.matricula = ''
+                this.logado = false
+                console.error(error.message) // mensagem de erro que o axios gera    
+            } finally {
+                this.loading = false
             }
         }
     },
